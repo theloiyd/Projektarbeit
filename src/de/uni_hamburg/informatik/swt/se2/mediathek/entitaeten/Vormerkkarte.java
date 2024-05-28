@@ -22,27 +22,24 @@ public class Vormerkkarte
     // Eigenschaften einer Vormerkkarte
     private LinkedBlockingQueue<Kunde> _vormerker;
     private final Medium _medium;
-    private final Kunde _vormerker1;
+
     /**
      * Initialisert eine neue Vormerkkarte mit den gegebenen Daten.
      *
      * @param medium Ein verliehene Medium.
-     * @param vormerker1 Der erste Kunde der das Medium ausleihen kann.
      *
      * @require vormerker1 != null
      * @require medium != null
      *
      * @ensure #getMedium() == medium
      */
-    public Vormerkkarte(Kunde vormerker1, Medium medium)
+    public Vormerkkarte(Medium medium)
     {
-        assert vormerker1 != null : "Vorbedingung verletzt: vormerker1 != null";
         assert medium != null : "Vorbedingung verletzt: medium != null";
 
-        _vormerker1 = vormerker1;
         _medium = medium;
         _vormerker = new LinkedBlockingQueue<>(3);
-        _vormerker.add(vormerker1);
+
     }
 
     /**
@@ -100,8 +97,6 @@ public class Vormerkkarte
         int result = 1;
         result = prime * result
                 + ((_medium == null) ? 0 : _medium.hashCode());
-        result = prime * result
-                + ((_vormerker == null) ? 0 : _vormerker.hashCode());
         result = prime * result + ((_medium == null) ? 0 : _medium.hashCode());
         return result;
     }
@@ -113,9 +108,7 @@ public class Vormerkkarte
         if (obj instanceof Vormerkkarte other)
         {
 
-            if (other.get_vormerker1()
-                .equals(_vormerker1)
-                    && other.getMedium()
+            if (other.getMedium()
                         .equals(_medium) && other.alleVormerker().equals(this.alleVormerker()))
 
                 result = true;

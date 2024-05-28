@@ -10,6 +10,9 @@ import de.uni_hamburg.informatik.swt.se2.mediathek.wertobjekte.Kundennummer;
 
 import static org.junit.Assert.*;
 
+/**
+ * Test für Verleihkarte
+ */
 public class VerleihkarteTest
 {
     private Datum _datum;

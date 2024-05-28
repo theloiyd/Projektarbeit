@@ -231,7 +231,7 @@ public class VormerkWerkzeug
         // TODO für Aufgabenblatt 6 (nicht löschen): Vormerken einbauen
         for (Medium m : selectedMedien)
         {
-            if()
+            m.
         }
 
     }
