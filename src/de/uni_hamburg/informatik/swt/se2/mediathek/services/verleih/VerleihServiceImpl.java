@@ -7,6 +7,7 @@ import java.util.Map;
 
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Kunde;
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Verleihkarte;
+import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Vormerkkarte;
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.medien.Medium;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.AbstractObservableService;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.kundenstamm.KundenstammService;
@@ -29,6 +30,9 @@ public class VerleihServiceImpl extends AbstractObservableService
      * die Angabe des Mediums möglich. Beispiel: _verleihkarten.get(medium)
      */
     private Map<Medium, Verleihkarte> _verleihkarten;
+
+
+    //private Map<Medium, Vormerkkarte> _verleihkarten;
 
     /**
      * Der Medienbestand.
@@ -83,11 +87,31 @@ public class VerleihServiceImpl extends AbstractObservableService
         return result;
     }
 
+    /**
+     * Erzeugt eine neue HashMap aus dem Initialbestand für Vormerkkarten.
+     */
+//    private HashMap<Medium, Vormerkkarte> erzeugeVormerkkartenBestand(
+//            List<Vormerkkarte> initialBestand)
+//    {
+//        HashMap<Medium, Vormerkkarte> result = new HashMap<Medium, Vormerkkarte>();
+//        for (Vormerkkarte vormerkkarte : initialBestand)
+//        {
+//            result.put(vormerkkarte.getMedium(), vormerkkarte);
+//        }
+//        return result;
+//    }
+
     @Override
     public List<Verleihkarte> getVerleihkarten()
     {
         return new ArrayList<Verleihkarte>(_verleihkarten.values());
     }
+
+//    @Override
+//    public List<Vormerkkarte> getVormerkkarte()
+//    {
+//        return new ArrayList<Vormerkkarte>(_vormerkkarten.values());
+//    }
 
     @Override
     public boolean istVerliehen(Medium medium)

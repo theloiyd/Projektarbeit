@@ -22,7 +22,7 @@ public class Vormerkkarte
     // Eigenschaften einer Vormerkkarte
     private LinkedBlockingQueue<Kunde> _vormerker;
     private final Medium _medium;
-
+    private final Kunde _vormerker1;
     /**
      * Initialisert eine neue Vormerkkarte mit den gegebenen Daten.
      *
@@ -39,6 +39,7 @@ public class Vormerkkarte
         assert vormerker1 != null : "Vorbedingung verletzt: vormerker1 != null";
         assert medium != null : "Vorbedingung verletzt: medium != null";
 
+        _vormerker1 = vormerker1;
         _medium = medium;
         _vormerker = new LinkedBlockingQueue<>(3);
         _vormerker.add(vormerker1);
@@ -53,6 +54,14 @@ public class Vormerkkarte
     public Kunde get_vormerker1()
     {
         return _vormerker.element();
+    }
+    /**
+     * Fügt einen Vormerker hinzu
+     *
+     */
+    public void addVormerker(Kunde vormerker)
+    {
+        _vormerker.add(vormerker);
     }
 
     /**
@@ -90,9 +99,9 @@ public class Vormerkkarte
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((_ausleihdatum == null) ? 0 : _ausleihdatum.hashCode());
+                + ((_medium == null) ? 0 : _medium.hashCode());
         result = prime * result
-                + ((_entleiher == null) ? 0 : _entleiher.hashCode());
+                + ((_vormerker == null) ? 0 : _vormerker.hashCode());
         result = prime * result + ((_medium == null) ? 0 : _medium.hashCode());
         return result;
     }
@@ -101,16 +110,13 @@ public class Vormerkkarte
     public boolean equals(Object obj)
     {
         boolean result = false;
-        if (obj instanceof Vormerkkarte)
+        if (obj instanceof Vormerkkarte other)
         {
-            Vormerkkarte other = (Vormerkkarte) obj;
 
-            if (other.getAusleihdatum()
-                .equals(_ausleihdatum)
-                    && other.getEntleiher()
-                        .equals(_entleiher)
+            if (other.get_vormerker1()
+                .equals(_vormerker1)
                     && other.getMedium()
-                        .equals(_medium))
+                        .equals(_medium) && other.alleVormerker().equals(this.alleVormerker()))
 
                 result = true;
         }
