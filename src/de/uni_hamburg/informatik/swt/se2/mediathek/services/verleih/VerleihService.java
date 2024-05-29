@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Kunde;
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Verleihkarte;
+import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Vormerkkarte;
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.medien.Medium;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.ObservableService;
 import de.uni_hamburg.informatik.swt.se2.mediathek.wertobjekte.Datum;
@@ -109,6 +110,12 @@ public interface VerleihService extends ObservableService
      */
     void nimmZurueck(List<Medium> medien, Datum rueckgabeDatum)
             throws ProtokollierException;
+
+    List<Vormerkkarte> getVormerkkarten();
+
+    Vormerkkarte getVormerkkarteFuer(Medium medium);
+
+    void merkeVor(Kunde kunde, Medium medium);
 
     /**
      * Prüft ob das angegebene Medium verliehen ist.

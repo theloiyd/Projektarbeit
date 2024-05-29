@@ -4,6 +4,7 @@ import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.medien.Medium;
 import de.uni_hamburg.informatik.swt.se2.mediathek.wertobjekte.Datum;
 import de.uni_hamburg.informatik.swt.se2.mediathek.wertobjekte.Geldbetrag;
 
+import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**Verleih
@@ -50,8 +51,25 @@ public class Vormerkkarte
      */
     public Kunde get_vormerker1()
     {
-        return _vormerker.element();
+        if (_vormerker.isEmpty()) {
+            return null;
+        }
+        else return _vormerker.peek();
     }
+
+    public Kunde get_vormerker2() {
+        if (_vormerker.size() < 2)
+            return null;
+        return _vormerker.toArray(new Kunde [0])[1];
+    }
+
+    public Kunde get_vormerker3()
+    {
+        if (_vormerker.size() < 3)
+            return null;
+        return _vormerker.toArray(new Kunde [0])[2];
+    }
+
     /**
      * Fügt einen Vormerker hinzu
      *
@@ -67,14 +85,14 @@ public class Vormerkkarte
      * @return den Kunden, der das Medium entliehen hat.
      *
      */
-    public String alleVormerker()
+    public List<Kunde> alleVormerker()
     {
-        String result = "";
-        for (Kunde s : _vormerker)
-        {
-            result += ", " + s.toString();
-        }
-        return result;
+        return List.copyOf(_vormerker);
+    }
+
+    public LinkedBlockingQueue<Kunde> getQueue()
+    {
+        return _vormerker;
     }
 
     /**

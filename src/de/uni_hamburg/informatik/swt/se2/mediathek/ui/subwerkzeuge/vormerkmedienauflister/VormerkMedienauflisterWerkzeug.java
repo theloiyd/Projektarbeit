@@ -2,17 +2,21 @@ package de.uni_hamburg.informatik.swt.se2.mediathek.ui.subwerkzeuge.vormerkmedie
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Kunde;
+import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Verleihkarte;
+import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Vormerkkarte;
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.medien.Medium;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.ServiceObserver;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.medienbestand.MedienbestandService;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.verleih.VerleihService;
 import de.uni_hamburg.informatik.swt.se2.mediathek.ui.ObservableSubWerkzeug;
+import de.uni_hamburg.informatik.swt.se2.mediathek.wertobjekte.Kundennummer;
 
 /**
  * Ein VormerkMedienauflisterWerkzeug ist ein Werkzeug zum Auflisten von Medien
@@ -84,10 +88,21 @@ public class VormerkMedienauflisterWerkzeug extends ObservableSubWerkzeug
             // Entleiher und möglichen Vormerkern ausgestattet werden.
             // Ist dies korrekt implementiert, erscheinen in der Vormerkansicht
             // die Namen des Entleihers und der möglichen 3 Vormerker.
-            Kunde entleiher = null;
+            Vormerkkarte vormerkkarte = _verleihService.getVormerkkarteFuer(medium);
+            Verleihkarte verleihkarte = _verleihService.getVerleihkarteFuer(medium);
             Kunde vormerker1 = null;
             Kunde vormerker2 = null;
             Kunde vormerker3 = null;
+//            Kunde b = new Kunde(new Kundennummer(123976), "a", "a");
+            List<Kunde> a = vormerkkarte.alleVormerker();
+            vormerker1 = vormerkkarte.get_vormerker1();
+            vormerker2 = vormerkkarte.get_vormerker2();
+            vormerker3 = vormerkkarte.get_vormerker3();
+            Kunde entleiher = null;
+            if (_verleihService.istVerliehen(medium))
+            {
+                entleiher = verleihkarte.getEntleiher();
+            }
 
             medienFormatierer.add(new VormerkMedienFormatierer(medium,
                     entleiher, vormerker1, vormerker2, vormerker3));

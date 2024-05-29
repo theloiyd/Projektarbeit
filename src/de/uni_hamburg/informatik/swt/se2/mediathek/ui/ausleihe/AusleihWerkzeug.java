@@ -3,11 +3,13 @@ package de.uni_hamburg.informatik.swt.se2.mediathek.ui.ausleihe;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Kunde;
+import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Vormerkkarte;
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.medien.Medium;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.ServiceObserver;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.kundenstamm.KundenstammService;
@@ -203,7 +205,7 @@ public class AusleihWerkzeug
     }
 
     /**
-     * Überprüft, ob die selektierten Medien ausgeleihen werden können und ob
+     * Überprüft, ob die selektierten Medien ausgeliehen werden können und ob
      * ein Kunde selektiert ist, an den ausgeliehen werden könnte.
      * 
      * @return true, wenn ausleihen möglich ist, sonst false.
@@ -212,11 +214,23 @@ public class AusleihWerkzeug
     {
         List<Medium> medien = _medienAuflisterWerkzeug.getSelectedMedien();
         Kunde kunde = _kundenAuflisterWerkzeug.getSelectedKunde();
-        // TODO für Aufgabenblatt 6 (nicht löschen): So ändern, dass vorgemerkte
-        // Medien nur vom ersten Vormerker ausgeliehen werden können, gemäß
-        // Anforderung c).
+
         boolean ausleiheMoeglich = (kunde != null) && !medien.isEmpty()
                 && _verleihService.sindAlleNichtVerliehen(medien);
+
+        for (Medium m : medien) {
+            Vormerkkarte a = _verleihService.getVormerkkarteFuer(m);
+            LinkedBlockingQueue<Kunde> que = a.getQueue();
+
+            if (a.get_vormerker1() != kunde && que.size() != 0)
+            {
+                return false;
+            }
+
+        }
+        // TODO für Aufgabenblatt 6 (nicht löschen): So ändern, dass vorgemerkte
+        // Medien nur vom ersten Vormerker ausgeliehen werden können, gemäß
+        // Anforderung c)
 
         return ausleiheMoeglich;
     }

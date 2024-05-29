@@ -3,10 +3,12 @@ package de.uni_hamburg.informatik.swt.se2.mediathek.ui.vormerken;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.swing.JPanel;
 
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Kunde;
+import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.Vormerkkarte;
 import de.uni_hamburg.informatik.swt.se2.mediathek.entitaeten.medien.Medium;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.ServiceObserver;
 import de.uni_hamburg.informatik.swt.se2.mediathek.services.kundenstamm.KundenstammService;
@@ -214,7 +216,17 @@ public class VormerkWerkzeug
         // der Anforderungen a), b), c) und e) aktiviert.
         boolean vormerkenMoeglich = (kunde != null) && !medien.isEmpty();
 
-        return vormerkenMoeglich;
+
+        for (Medium m : medien)
+        {
+            Vormerkkarte a = _verleihService.getVormerkkarteFuer(m);
+            LinkedBlockingQueue<Kunde> que = a.getQueue();
+            assert !que.contains(kunde) : "Vorbedingung verletzt: !b.contains(kunde)"; //Kunde noch nicht drinne
+            assert que.size() < 2 : "Vorbedingung verletzt: b.size() < 3"; //Que nicht voll
+
+        }
+
+        return true && vormerkenMoeglich;
     }
 
     /**
@@ -231,9 +243,11 @@ public class VormerkWerkzeug
         // TODO für Aufgabenblatt 6 (nicht löschen): Vormerken einbauen
         for (Medium m : selectedMedien)
         {
-            m.
+            if (istVormerkenMoeglich())
+            {
+                _verleihService.merkeVor(selectedKunde, m);
+            }
         }
-
     }
 
     /**

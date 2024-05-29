@@ -73,6 +73,9 @@ public class Verleihkarte
      */
     public Kunde getEntleiher()
     {
+        if (_entleiher == null){
+            return null;
+        }
         return _entleiher;
     }
 
