@@ -147,3 +147,55 @@ am 29.5.2024 verliehen an
     Anschrift:
     Ottensener Strasse 10
     22761 Hamburg
+Thu May 30 14:35:01 CEST 2024: Ausleihe
+CD:
+    Titel: Disturbia
+    Kommentar: gut
+    Interpret: Rihanna
+    Spiellänge: 90
+am 30.5.2024 verliehen an
+    Kundennummer: 123461
+    Name: Anna Kurnikowa
+    Telefon: unbekannt
+    Anschrift:
+    Osterweg 1
+    22670 Hamburg
+Thu May 30 14:51:13 CEST 2024: Ausleihe
+CD:
+    Titel: Breakaway
+    Kommentar: Nachfolger vom Album Tankful
+    Interpret: Kelly Clarkson
+    Spiellänge: 87
+am 30.5.2024 verliehen an
+    Kundennummer: 123465
+    Name: John. J. Ava
+    Telefon: unbekannt
+    Anschrift:
+    Wurtstrasse 23
+    58507 Köln
+Thu May 30 14:51:25 CEST 2024: Rückgabe
+CD:
+    Titel: Breakaway
+    Kommentar: Nachfolger vom Album Tankful
+    Interpret: Kelly Clarkson
+    Spiellänge: 87
+am 30.5.2024 verliehen an
+    Kundennummer: 123465
+    Name: John. J. Ava
+    Telefon: unbekannt
+    Anschrift:
+    Wurtstrasse 23
+    58507 Köln
+Thu May 30 14:54:22 CEST 2024: Ausleihe
+CD:
+    Titel: Breakaway
+    Kommentar: Nachfolger vom Album Tankful
+    Interpret: Kelly Clarkson
+    Spiellänge: 87
+am 30.5.2024 verliehen an
+    Kundennummer: 123456
+    Name: Susi Sonnenschein
+    Telefon: unbekannt
+    Anschrift:
+    Sonnenallee 20
+    22760 Hamburg

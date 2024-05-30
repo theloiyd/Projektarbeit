@@ -79,6 +79,11 @@ public class Vormerkkarte
         _vormerker.add(vormerker);
     }
 
+    public void removeVormerker(Kunde vormerker)
+    {
+        _vormerker.remove(vormerker);
+    }
+
     /**
      * Gibt den zweiten Vormerker zurück.
      *

@@ -128,6 +128,7 @@ public interface VerleihService extends ObservableService
      */
     boolean istVerliehen(Medium medium);
 
+
     /**
      * Prüft ob alle angegebenen Medien nicht verliehen sind.
      * 

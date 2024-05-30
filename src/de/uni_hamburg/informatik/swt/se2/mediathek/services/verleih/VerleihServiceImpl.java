@@ -117,10 +117,8 @@ public class VerleihServiceImpl extends AbstractObservableService
     @Override
     public void merkeVor(Kunde kunde, Medium medium)
     {
-        assert kundeImBestand(kunde) : "Vorbedingung verletzt: kundeImBestand(kunde)";
         assert mediumImBestand(
                 medium) : "Vorbedingung verletzt: mediumExistiert(medium)";
-        assert !_verleihkarten.containsValue(kunde) : "Vorbedingung verletzt: kunde hat schon vorgemerkt";
         _vormerkkarten.get(medium).addVormerker(kunde);
         informiereUeberAenderung();
     }
@@ -227,6 +225,7 @@ public class VerleihServiceImpl extends AbstractObservableService
                     ausleihDatum);
 
             _verleihkarten.put(medium, verleihkarte);
+            _vormerkkarten.get(medium).removeVormerker(kunde);
             _protokollierer.protokolliere(
                     VerleihProtokollierer.EREIGNIS_AUSLEIHE, verleihkarte);
         }

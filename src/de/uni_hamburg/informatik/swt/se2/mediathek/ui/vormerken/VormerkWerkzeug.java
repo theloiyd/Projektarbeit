@@ -214,19 +214,20 @@ public class VormerkWerkzeug
         // TODO für Aufgabenblatt 6 (nicht löschen): Prüfung muss noch eingebaut
         // werden. Ist dies korrekt implementiert, wird der Vormerk-Button gemäß
         // der Anforderungen a), b), c) und e) aktiviert.
-        boolean vormerkenMoeglich = (kunde != null) && !medien.isEmpty();
+        boolean vormerkenMoeglich = true;
 
 
         for (Medium m : medien)
         {
             Vormerkkarte a = _verleihService.getVormerkkarteFuer(m);
             LinkedBlockingQueue<Kunde> que = a.getQueue();
-            assert !que.contains(kunde) : "Vorbedingung verletzt: !b.contains(kunde)"; //Kunde noch nicht drinne
-            assert que.size() < 2 : "Vorbedingung verletzt: b.size() < 3"; //Que nicht voll
-
+            if (que.contains(kunde) || que.size() >= 3)
+            {
+                vormerkenMoeglich = false;
+            }
         }
 
-        return true && vormerkenMoeglich;
+        return vormerkenMoeglich;
     }
 
     /**
