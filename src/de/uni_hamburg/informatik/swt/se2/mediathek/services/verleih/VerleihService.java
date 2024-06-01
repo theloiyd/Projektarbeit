@@ -111,10 +111,27 @@ public interface VerleihService extends ObservableService
     void nimmZurueck(List<Medium> medien, Datum rueckgabeDatum)
             throws ProtokollierException;
 
+
     List<Vormerkkarte> getVormerkkarten();
 
+    /**
+     * Gibt die Vormerkkarte für das angegebene Medium zurück, oder null wenn
+     * das Medium nicht vorgemerkt ist.
+     *
+     * @param medium Ein Medium.
+     * @return Die Vormerkkarte für das angegebene Medium.
+     *
+     *
+     */
     Vormerkkarte getVormerkkarteFuer(Medium medium);
 
+    /**
+     * merkt Medium vor
+     *
+     * @param medium Ein Medium, das vorgemerkt werden soll
+     *
+     *
+     */
     void merkeVor(Kunde kunde, Medium medium);
 
     /**
@@ -222,7 +239,6 @@ public interface VerleihService extends ObservableService
      * @ensure result != null
      */
     List<Verleihkarte> getVerleihkartenFuer(Kunde kunde);
-
     /**
      * Gibt die Verleihkarte für das angegebene Medium zurück, oder null wenn
      * das Medium nicht verliehen ist.

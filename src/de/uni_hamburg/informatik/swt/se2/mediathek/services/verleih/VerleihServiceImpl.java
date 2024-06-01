@@ -97,6 +97,7 @@ public class VerleihServiceImpl extends AbstractObservableService
         return result;
     }
 
+
     @Override
     public List<Verleihkarte> getVerleihkarten() {
         return new ArrayList<Verleihkarte>(_verleihkarten.values());

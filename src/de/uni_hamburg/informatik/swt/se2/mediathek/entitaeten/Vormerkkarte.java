@@ -46,24 +46,35 @@ public class Vormerkkarte
     /**
      * Gibt den ersten Vormerker zurück.
      * 
-     * @return den Kunden, der das Medium entliehen hat.
+     * @return ersten Vormerker.
      *
      */
-    public Kunde get_vormerker1()
+    public Kunde getVormerker1()
     {
         if (_vormerker.isEmpty()) {
             return null;
         }
         else return _vormerker.peek();
     }
-
-    public Kunde get_vormerker2() {
+    /**
+     * Gibt den zweiten Vormerker zurück.
+     *
+     * @return zweiten Vormerker.
+     *
+     */
+    public Kunde getVormerker2() {
         if (_vormerker.size() < 2)
             return null;
         return _vormerker.toArray(new Kunde [0])[1];
     }
 
-    public Kunde get_vormerker3()
+    /**
+     * Gibt den dritten Vormerker zurück.
+     *
+     * @return dritten Vormerker.
+     *
+     */
+    public Kunde getVormerker3()
     {
         if (_vormerker.size() < 3)
             return null;
@@ -79,15 +90,19 @@ public class Vormerkkarte
         _vormerker.add(vormerker);
     }
 
+    /**
+     * Entfernt einen Vormerker
+     *
+     */
     public void removeVormerker(Kunde vormerker)
     {
         _vormerker.remove(vormerker);
     }
 
     /**
-     * Gibt den zweiten Vormerker zurück.
+     * Gibt alle Vormerker zurück.
      *
-     * @return den Kunden, der das Medium entliehen hat.
+     * @return alle Vormerker.
      *
      */
     public List<Kunde> alleVormerker()
@@ -95,6 +110,12 @@ public class Vormerkkarte
         return List.copyOf(_vormerker);
     }
 
+    /**
+     * Gibt die Warteschlange der Vormerker zurück.
+     *
+     * @return Warteschlange der Vormerker.
+     *
+     */
     public LinkedBlockingQueue<Kunde> getQueue()
     {
         return _vormerker;
