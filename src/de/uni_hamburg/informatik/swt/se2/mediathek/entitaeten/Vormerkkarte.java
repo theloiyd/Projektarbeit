@@ -93,6 +93,8 @@ public class Vormerkkarte
     /**
      * Entfernt einen Vormerker
      *
+     * @param vormerker nimmt den Vormerker entgegen, der entfernt werden soll.
+     * @require vormerker != null
      */
     public void removeVormerker(Kunde vormerker)
     {

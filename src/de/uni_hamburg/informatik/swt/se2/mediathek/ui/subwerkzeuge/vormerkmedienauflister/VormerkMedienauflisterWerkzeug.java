@@ -95,9 +95,9 @@ public class VormerkMedienauflisterWerkzeug extends ObservableSubWerkzeug
             Kunde vormerker3 = null;
 //            Kunde b = new Kunde(new Kundennummer(123976), "a", "a");
             List<Kunde> a = vormerkkarte.alleVormerker();
-            vormerker1 = vormerkkarte.get_vormerker1();
-            vormerker2 = vormerkkarte.get_vormerker2();
-            vormerker3 = vormerkkarte.get_vormerker3();
+            vormerker1 = vormerkkarte.getVormerker1();
+            vormerker2 = vormerkkarte.getVormerker2();
+            vormerker3 = vormerkkarte.getVormerker3();
             Kunde entleiher = null;
             if (_verleihService.istVerliehen(medium))
             {

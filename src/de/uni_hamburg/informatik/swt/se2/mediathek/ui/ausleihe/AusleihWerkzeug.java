@@ -222,7 +222,7 @@ public class AusleihWerkzeug
             Vormerkkarte a = _verleihService.getVormerkkarteFuer(m);
             LinkedBlockingQueue<Kunde> que = a.getQueue();
 
-            if (a.get_vormerker1() != kunde && que.size() != 0)
+            if (a.getVormerker1() != kunde && que.size() != 0)
             {
                 return false;
             }
