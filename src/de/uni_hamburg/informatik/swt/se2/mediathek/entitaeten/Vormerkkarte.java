@@ -11,7 +11,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Mit Hilfe von Vormerkkarte werden beim Personen vorgermerkt die ein Medium ausleihgen wollen.
  * 
  * Sie beantwortet die folgenden Fragen: Wer kann als nächstes das Medium ausleihen?
- * 
+ *
  * Wenn Medien ausgeliehen wurde kann die Person die es ausleiht entfernt werden.
  * 
  * @author GBS-Team
@@ -84,10 +84,16 @@ public class Vormerkkarte
     /**
      * Fügt einen Vormerker hinzu
      *
+     * @param vormerker nimmt den neuen Vormerker entgegen.
+     * @require vormerker != null
      */
     public void addVormerker(Kunde vormerker)
     {
+        assert vormerker != null : "Vorbedingung verletzt: vormerker != null";
         _vormerker.add(vormerker);
+    }
+    {
+
     }
 
     /**
@@ -98,6 +104,7 @@ public class Vormerkkarte
      */
     public void removeVormerker(Kunde vormerker)
     {
+        assert vormerker != null : "Vorbedingung verletzt: vormerker != null";
         _vormerker.remove(vormerker);
     }
 

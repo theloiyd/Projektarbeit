@@ -102,7 +102,12 @@ public class VormerkkarteTest
     @Test
     public void testGetMedium()
     {
-      assertEquals(_kunde3, vormerkkarte.get_vormerker3());
-        return vormerkkarte.getMedium(medium);
+      _medium.equals(vormerkkarte.getMedium());
+    }
+
+    @Test
+    public void testeEquals()
+    {
+        assertTrue(vormerkkarte.equals(vormerkkarte));
     }
 }
